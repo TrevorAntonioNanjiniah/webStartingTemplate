@@ -1,10 +1,6 @@
 <?php
-$server= "localhost";
-$username= "root";
-$password= "";
-$database= "web2";
+ require_once('logics/dbconnection.php');
 
-$conn = mysqli_connect($server,$username,$password,$database);
 $sqlQuery = mysqli_query($conn, "SELECT * FROM enrollment");
 
 $fetchrecords = mysqli_fetch_array($sqlQuery);
