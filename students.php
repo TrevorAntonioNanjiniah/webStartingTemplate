@@ -46,7 +46,7 @@
 									  <td><?php echo $fetchrecords['course']?></td>
 									  <td><?php echo $fetchrecords['created_add']?></td>
 									  <td>
-									  <a href="#" class="btn btn-primary btn-small">
+									  <a href="edit-enrollment.php?id=<?php echo $fetchrecords['no']?>" class="btn btn-primary btn-small">
 											<i class="fa fa-edit"></i>
 									  </a>
 									  <a href="#" class="btn btn-info btn-small">
