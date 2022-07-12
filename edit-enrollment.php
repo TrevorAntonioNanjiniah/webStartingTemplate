@@ -1,15 +1,38 @@
 <?php
+    $message ="";
     require_once('logics/dbconnection.php');
     $queryuser = mysqli_query($conn, "SELECT * FROM enrollment WHERE no='".$_GET['id']."'   ");
 
     while($fetchuser =mysqli_fetch_array($queryuser))
     {
+        $id = $fetchuser['no'];
         $fullname = $fetchuser['fullname'];
         $phonenumber = $fetchuser['phonenumber'];
         $email = $fetchuser['email'];
         $gender = $fetchuser['gender'];
         $course = $fetchuser['course'];
         
+    }
+
+    // update user records
+    if(isset($_POST['updaterecords']))
+    {
+        //fetch form data
+        $name = $_POST['fullname'];
+        $forphonenumber = $_POST['phonenumber'];
+        $emailaddress = $_POST['email'];
+        $forgender = $_POST['gender'];
+        $forcourse = $_POST['course'];
+
+        // update records
+        $updatequery = mysqli_query($conn, "UPDATE enrollment SET fullname='$name', phonenumber='$forphonenumber', email='$emailaddress', gender='$forgender', course='$forcourse' WHERE no='".$_GET['id']."' ");
+        if($updatequery)
+        {
+            $message= "Data Updated";
+        }
+        else{
+            $message= "Error Occured";
+        }
     }
 ?>
 
@@ -30,9 +53,10 @@
                     <div class="card">
                             <div class="card-header bg-dark text-center text-white">
                                 <h4>Edit Student:</h4>
+                                <span><?php echo $message ?></span>
                             </div>
                             <div class="card-body">
-                                <form action="enroll.php" method="POST" >
+                                <form action=" edit-enrollment.php?id=<?php echo $id ?> " method="POST" >
                                     <div class="row">
                                         <div class="col-lg-6 mb-3">
                                             <label class="form-label" for="fullname">Full Name:</label>
@@ -75,11 +99,9 @@
                                     <div class="container-fluid">
                                         <div class="row">
                                             <div class="col-lg-6 padding-bottom:5px;">
-                                            <button type="submit" name="SubmitButton" class="btn btn-outline-primary">Update Record</button>
-                                                
+                                            <button type="submit" name="updaterecords" class="btn btn-outline-primary">Update Record</button>      
                                         </div>
-                                           
-                                     </div>
+                                    </div>
                                 <form>
                             </div>
                             
