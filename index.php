@@ -8,9 +8,6 @@
 	$queryAllFemale = mysqli_query($conn, "SELECT * FROM enrollment WHERE gender='Female' ");
 	$CountAllFemale = mysqli_num_rows($queryAllFemale);
 
-	//count all courses
-	// $queryAllCourses = mysqli_query($conn, "SELECT * FROM enrollment");
-	// $countAllCourses = mysqli_num_rows($queryAllCourses);
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +46,7 @@
 					</div>
 					<div class="card-body">
 						<span><i class="fa fa-folder-open fa=3x"></i></span>
-						<span class="float-right"><?php echo $countAllCourses?> </span>
+						<span class="float-right">00</span>
 					</div>
 					<div class="card-footer"></div>
 				</div>
